@@ -1,64 +1,59 @@
-package airlinecheckinsystem_sec51_g4;
+package airlinecheckinsystem;
 import java.util.*;
 
-/*
- * CSC301 Assignment 2
- * Done by: Zayna Wasma (1084503)
- */
-
-public class AirlineCheckInSystem_Sec51_G4 {
+public class AirlineCheckInSystem {
   
     // Data structures for managing passengers, luggage, and priority services.
-    private Queue<Passenger_Sec51_G4> passengersQueue;
-    private Stack<Luggage_Sec51_G4> luggageStack;
-    private PriorityQueue<Passenger_Sec51_G4> priorityServicesQueue;
+    private Queue<Passenger> passengersQueue;
+    private Stack<Luggage> luggageStack;
+    private PriorityQueue<Passenger> priorityServicesQueue;
 
     // Constructor
-    public AirlineCheckInSystem_Sec51_G4() {
+    public AirlineCheckInSystem() {
         // Initialize data structures
-        passengersQueue = new LinkedList<Passenger_Sec51_G4>();
-        luggageStack = new Stack<Luggage_Sec51_G4>();
-        priorityServicesQueue = new PriorityQueue<Passenger_Sec51_G4>();
+        passengersQueue = new LinkedList<Passenger>();
+        luggageStack = new Stack<Luggage>();
+        priorityServicesQueue = new PriorityQueue<Passenger>();
     }
 
     // Methods
-    public void enqueuePassenger(Passenger_Sec51_G4 passenger) {
-        // Logic to add passenger to the passengers queue
+    public void enqueuePassenger(Passenger passenger) {
+        // Logic to add passengers to the passenger queue
         passengersQueue.offer(passenger);
     }
 
-    public void enqueuePriorityPassenger(Passenger_Sec51_G4 passenger) {
-        // Logic to add passenger to the priority services queue
+    public void enqueuePriorityPassenger(Passenger passenger) {
+        // Logic to add passengers to the priority services queue
         priorityServicesQueue.offer(passenger);
     }
 
-    public void pushLuggage(Luggage_Sec51_G4 luggage) {
+    public void pushLuggage(Luggage luggage) {
         // Logic to push luggage to the luggage stack
         luggageStack.push(luggage);
     }
 
-    public Passenger_Sec51_G4 dequeuePassenger() {
+    public Passenger dequeuePassenger() {
         // Logic to serve the next passenger (considering priority)
-        Passenger_Sec51_G4 dequeuedPassenger = passengersQueue.poll();
+        Passenger dequeuedPassenger = passengersQueue.poll();
         // Return the dequeued passenger
         return dequeuedPassenger; 
     }
 
-    public Luggage_Sec51_G4 popLuggage() {
+    public Luggage popLuggage() {
         // Logic to process the luggage from the luggage stack
-        Luggage_Sec51_G4 popedLuggage = luggageStack.pop();
+        Luggage popedLuggage = luggageStack.pop();
         // Return the processed luggage
         return popedLuggage; 
     }
 
-    public Passenger_Sec51_G4 getNextPassenger() {
+    public Passenger getNextPassenger() {
         // Logic to view the next passenger to be served without dequeuing
         // Return the next passenger
         if (!passengersQueue.isEmpty()) { return passengersQueue.peek(); }
         else { return null; }
     }
 
-    public Luggage_Sec51_G4 getTopLuggage() {
+    public Luggage getTopLuggage() {
         // Logic to view the top luggage without popping
         // Return the top luggage
         if (!luggageStack.isEmpty()) { return luggageStack.peek(); }
@@ -66,7 +61,7 @@ public class AirlineCheckInSystem_Sec51_G4 {
     }
     
     public static void main(String[] args) {
-        AirlineCheckInSystem_Sec51_G4 checkInSystem = new AirlineCheckInSystem_Sec51_G4();
+        AirlineCheckInSystem checkInSystem = new AirlineCheckInSystem();
         Scanner scanner = new Scanner(System.in);
         
         while (true) {
@@ -97,7 +92,7 @@ public class AirlineCheckInSystem_Sec51_G4 {
                     scanner.nextLine();
                     System.out.print("Enter Special Needs (if any): ");
                     String specialNeeds = scanner.nextLine();
-                    checkInSystem.enqueuePassenger(new Passenger_Sec51_G4(Id, name, ticketClass, luggageCount, specialNeeds));
+                    checkInSystem.enqueuePassenger(new Passenger(Id, name, ticketClass, luggageCount, specialNeeds));
                     System.out.println("Passenger added to the queue.");
                     break; }
                 case 2: {
@@ -105,7 +100,7 @@ public class AirlineCheckInSystem_Sec51_G4 {
                     System.out.print("Enter passenger ID to add to priority queue: ");
                     String id = scanner.nextLine();
 
-                    for (Passenger_Sec51_G4 passenger : checkInSystem.passengersQueue) {
+                    for (Passenger passenger : checkInSystem.passengersQueue) {
                         if (passenger.getId().equals(id)) {
                             checkInSystem.enqueuePriorityPassenger(passenger);
                             System.out.println("Passenger added to the priority queue.");
@@ -131,27 +126,27 @@ public class AirlineCheckInSystem_Sec51_G4 {
                     System.out.print("Enter Height: ");
                     int height = scanner.nextInt();
                     scanner.nextLine(); 
-                    checkInSystem.pushLuggage(new Luggage_Sec51_G4(luggageId, passengerId, weight, length, width, height));
+                    checkInSystem.pushLuggage(new Luggage(luggageId, passengerId, weight, length, width, height));
                     System.out.println("Luggage added to the stack.");
                     break; }
                 case 4:
                     // Logic to dequeue a passenger
-                    Passenger_Sec51_G4 removedPassenger = checkInSystem.dequeuePassenger();
+                    Passenger removedPassenger = checkInSystem.dequeuePassenger();
                     System.out.println("Removed passenger: " + removedPassenger);
                     break;
                 case 5:
                     // Logic to pop luggage
-                    Luggage_Sec51_G4 removedLuggage = checkInSystem.popLuggage();
+                    Luggage removedLuggage = checkInSystem.popLuggage();
                     System.out.println("Removed luggage: " + removedLuggage);
                     break;
                 case 6:
                     // Logic to view next passenger
-                    Passenger_Sec51_G4 nextPassenger = checkInSystem.getNextPassenger();
+                    Passenger nextPassenger = checkInSystem.getNextPassenger();
                     System.out.println("Next passenger: " + nextPassenger);
                     break;
                 case 7:
                     // Logic to view top luggage
-                    Luggage_Sec51_G4 topLuggage = checkInSystem.getTopLuggage();
+                    Luggage topLuggage = checkInSystem.getTopLuggage();
                     System.out.println("Top luggage: " + topLuggage);
                     break;
                 case 8:
