@@ -1,21 +1,16 @@
-package airlinecheckinsystem_sec51_g4;
+package airlinecheckinsystem;
 
-/*
- * CSC301 Assignment 2
- * Done by: Zayna Wasma (1084503)
- */
-
-public class Passenger_Sec51_G4 {
+public class Passenger {
     // attributes
     private String id;
     private String name;
     private String ticketClass;
     private int luggageCount;
     private String specialNeeds;
-    private PriorityServices_Sec51_G4 priority;
+    private PriorityServices priority;
     
     // paramterized constructor
-    public Passenger_Sec51_G4(String id, String name, String ticketClass, int luggageCount, String specialNeeds) {
+    public Passenger(String id, String name, String ticketClass, int luggageCount, String specialNeeds) {
         this.id = id;
         this.name = name;
         this.ticketClass = ticketClass;
@@ -35,7 +30,7 @@ public class Passenger_Sec51_G4 {
     public void setLuggageCount(int luggageCount) { this.luggageCount = luggageCount; }
     public String getSpecialNeeds() { return specialNeeds; }
     public void setSpecialNeeds(String specialNeeds) { this.specialNeeds = specialNeeds; }
-    public PriorityServices_Sec51_G4 getPriorityServices() { return priority; }
+    public PriorityServices getPriorityServices() { return priority; }
 
     // toString() method
     @Override
@@ -47,11 +42,11 @@ public class Passenger_Sec51_G4 {
                 "\t Special Needs (if any): " + getSpecialNeeds();
     }
     
-    /*@Override
-    public int compareTo(Passenger_Sec51_G4 other) {
+    @Override
+    public int compareTo(Passenger other) {
         // Compare passengers based on their priority scores
         int score1 = this.priority.getPriorityScore();
         int score2 = other.priority.getPriorityScore();
         return Integer.compare(score2, score1);
-    }*/
+    }
 } // end of class
