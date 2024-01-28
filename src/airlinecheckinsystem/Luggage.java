@@ -1,12 +1,7 @@
-package airlinecheckinsystem_sec51_g4;
+package airlinecheckinsystem;
 import java.util.*;
 
-/*
- * CSC301 Assignment 2
- * Done by: Zayna Wasma (1084503)
- */
-
-public class Luggage_Sec51_G4 {
+public class Luggage {
     // attributes
     private String id;
     private String passengerId;
@@ -16,7 +11,7 @@ public class Luggage_Sec51_G4 {
     private int height;
 
     // parameterized constructor
-    public Luggage_Sec51_G4(String id, String passengerId, double weight, int length, int width, int height) {
+    public Luggage(String id, String passengerId, double weight, int length, int width, int height) {
         this.id = id;
         this.passengerId = passengerId;
         this.weight = weight;
