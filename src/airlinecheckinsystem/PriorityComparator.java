@@ -1,14 +1,9 @@
-package airlinecheckinsystem_sec51_g4;
+package airlinecheckinsystem;
 import java.util.Comparator;
 
-/*
- * CSC301 Assignment 2
- * Done by: Zayna Wasma (1084503)
- */
-
-public class PriorityComparator implements Comparator<Passenger_Sec51_G4> {
+public class PriorityComparator implements Comparator<Passenger> {
     @Override
-    public int compare(Passenger_Sec51_G4 p1, Passenger_Sec51_G4 p2) {
+    public int compare(Passenger p1, Passenger p2) {
         int score1 = p1.getPriorityServices().getPriorityScore();
         int score2 = p2.getPriorityServices().getPriorityScore();
             
